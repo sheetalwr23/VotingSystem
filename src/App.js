@@ -5,7 +5,7 @@ import "./App.css";
 import Modal from "./Modal";
 
 function App() {
-  const { votes, addVote } = useContext(VotingContext);
+  const { votes, voters, addVote } = useContext(VotingContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [voterName, setVoterName] = useState("");
   const [monitorName, setMonitorName] = useState("");
@@ -63,6 +63,15 @@ function App() {
             </ul>
           )}
         </li>
+      </ul>
+
+      <h2>Voters:</h2>
+      <ul>
+        {voters.map((voter, index) => (
+          <li key={index}>
+            {voter.voterName} voted for {voter.monitorName}
+          </li>
+        ))}
       </ul>
     </div>
   );
